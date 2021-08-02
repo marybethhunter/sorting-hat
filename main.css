@@ -3,13 +3,19 @@ body {
 }
 
 .welcome,
-.sortCard {
+.sortCard,
+.sortCardForm {
   background-color: rgb(255, 255, 255);
   border: black 2px solid;
   margin: 20px;
   text-align: center;
 }
 
-.nameInputForm {
-  width: 300px;
+form {
+  padding: 15px;
+  align-self: center;
+}
+
+.btn {
+  min-width: 100px;
 }

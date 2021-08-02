@@ -26,15 +26,15 @@ const createSortingFormCard = () => {
       <div class ="sortCard sortCardForm">
       <form class="row g-3">
       <div class="col-auto">
-        <label for="staticEmail2" class="visually-hidden">Email</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Name: ">
+        <label for="nameLabel" class="visually-hidden">Name</label>
+        <input type="text" readonly class="form-control-plaintext" id="nameLabel" value="Name: ">
       </div>
       <div class="col-auto">
-        <label for="inputPassword2" class="visually-hidden">Password</label>
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Luna Lovegood">
+        <label for="inputName" class="visually-hidden">Password</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Luna Lovegood" required/>
       </div>
       <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Sort!</button>
+        <button type="submit" id="sortBtn" class="btn btn-primary mb-3">Sort!</button>
       </div>
     </form>
     </div>
@@ -45,9 +45,34 @@ const createSortingFormCard = () => {
   renderToDom("#sortingCard", domString);
 };
 
+const autoAssignHogwartsHouse = () => {
+  
+  let domString = `
+  <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <button class="btn btn-primary" id="expelBtn>Expel</button>
+  </div>
+</div>
+  `;
+
+  renderToDom("#sortedCards", domString);
+};
+
 const welcomeButtonClick = (event) => {
   if (event.target.id === "welcomeBtn") {
     createSortingFormCard(event);
+  }
+};
+
+const sortFormClick = (event) => {
+  const sortedStudents = [];
+  
+  if (event.target.id === "sortBtn") {
+    autoAssignHogwartsHouse();
+    //function auto assigning house to a name
   }
 };
 
@@ -55,12 +80,16 @@ const buttonClickEvents = () => {
   document
     .querySelector("#welcomeCard")
     .addEventListener("click", welcomeButtonClick);
+  document
+    .querySelector("#sortingCard")
+    .addEventListener("click", (sortFormClick));
 };
 
 const init = () => {
   createWelcomeCard();
   buttonClickEvents();
   welcomeButtonClick();
+  sortFormClick();
 };
 
 init();
