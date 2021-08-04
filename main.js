@@ -21,14 +21,15 @@ const housesArray = [
   },
 ];
 
-// const sortHouses = () => {
-//   const hogHouses = ['Griffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
-//   const randomHogHouses = hogHouses(Math.floor(Math.random() * hogHouses.length));
+const sortHouses = () => {
+  const randomHogHouses = housesArray[Math.floor(Math.random() * housesArray.length)];
 
-//   return randomHogHouses;
-// };
+  return randomHogHouses;
+};
 
-const randomHouse = housesArray[Math.floor(Math.random() * housesArray.length)];
+
+
+// const randomHouse = housesArray[Math.floor(Math.random() * housesArray.length)];
 
 const sortedStudents = [];
 
@@ -119,10 +120,11 @@ const autoAssignHogwartsHouseBuilder = (array) => {
 
 const sortFormSubmit = (event) => {
   event.preventDefault();
+  const {houseName, img} = sortHouses();
   const newStudent = {
     name: document.querySelector("#inputName").value,
-    house: randomHouse.houseName,
-    img: randomHouse.img,
+    house: houseName,
+    img: img,
     expelledStatus: 0,
   };
   sortedStudents.push(newStudent);
