@@ -1,25 +1,38 @@
 const housesArray = [
-{id: 1,
-houseName: "Griffindor",
-img: "https://i.pinimg.com/originals/57/1c/05/571c05cafaaeb23da51886f4365ea7ad.jpg",
-},
-{id: 2,
-houseName: "Ravenclaw",
-img: "https://i.pinimg.com/originals/4e/e6/35/4ee6353519b0e68acf635c3da751591c.png",
-},
-{id: 3,
- houseName: "Slytherin",
- img: "",
-},
-{id: 4,
-houseName: "Hufflepuff",
-img: "",
-},
+  {
+    id: 1,
+    houseName: "Griffindor",
+    img: "https://i.pinimg.com/originals/57/1c/05/571c05cafaaeb23da51886f4365ea7ad.jpg",
+  },
+  {
+    id: 2,
+    houseName: "Ravenclaw",
+    img: "https://i.pinimg.com/originals/4e/e6/35/4ee6353519b0e68acf635c3da751591c.png",
+  },
+  {
+    id: 3,
+    houseName: "Slytherin",
+    img: "https://www.logolynx.com/images/logolynx/53/5390e974544de6279c4d9cb6253e3a2c.jpeg",
+  },
+  {
+    id: 4,
+    houseName: "Hufflepuff",
+    img: "https://www.yourwdwstore.net/assets/images/3/30000/2000/100/32178.jpg",
+  },
 ];
+
+// const sortHouses = () => {
+//   const hogHouses = ['Griffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+//   const randomHogHouses = hogHouses(Math.floor(Math.random() * hogHouses.length));
+
+//   return randomHogHouses;
+// };
 
 const randomHouse = housesArray[Math.floor(Math.random() * housesArray.length)];
 
 const sortedStudents = [];
+
+const voldyArmy = [];
 
 const renderToDom = (divId, textToRender) => {
   const selectedDiv = document.querySelector(divId);
@@ -81,23 +94,27 @@ const buttonClickEvents = () => {
   document
     .querySelector("#sortingCard")
     .addEventListener("submit", sortFormSubmit);
+  document
+    .querySelector("#sortedCards")
+    .addEventListener("click", expelStudentToVoldyEvent);
 };
 
 const autoAssignHogwartsHouseBuilder = (array) => {
   let domString = "";
-    array.forEach((student, i) => {
-      domString += `
-      <div class="card" style="width: 18rem;">
+  array.forEach((student, i) => {
+    domString += `
+      <div class="card" style="width: 18rem;">\
+      <img src="${student.img}"><alt="hogwarts house logo">
       <div class="card-body">
         <h5 class="card-title">${student.name}</h5>
         <p class="card-text">${student.house}</p>
-        <button type="button"id=${i} class="btn btn-primary">Delete</button>
+        <button type="button" id=${i} id="expelButton" class="btn btn-primary">Expel</button>
       </div>
     </div>
     `;
-    });
-  
-    renderToDom("#sortedCards", domString);
+  });
+
+  renderToDom("#sortedCards", domString);
 };
 
 const sortFormSubmit = (event) => {
@@ -105,16 +122,57 @@ const sortFormSubmit = (event) => {
   const newStudent = {
     name: document.querySelector("#inputName").value,
     house: randomHouse.houseName,
+    img: randomHouse.img,
+    expelledStatus: 0,
   };
   sortedStudents.push(newStudent);
   autoAssignHogwartsHouseBuilder(sortedStudents);
+
+  document.querySelector("form").reset();
+};
+
+const expelStudentToVoldyEvent = () => {
+  const expelledStudent = {
+    name: document.querySelector("#inputName").value,
+    expelledStatus: 1,
+  };
+  voldyArmy.push(expelledStudent);
+  expelledStudCardBuilder(voldyArmy);
+};
+
+const expelledStudCardBuilder = (array) => {
+  let domString = "";
+  array.forEach((student) => {
+    domString += `
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Oh no, ${student.name} has joined Voldemort's Army!</h5>
+      </div>
+    </div>
+    `;
+  });
+
+  renderToDom("#voldemortCards", domString);
 };
 
 const init = () => {
   createWelcomeCard();
   buttonClickEvents();
-  // sortFormClick();
-  // sortFormSubmit();
 };
 
 init();
+
+
+
+// const filterStudents = (array, status) => {
+//   return array.filter((stuObj) => stuObj.status === status);
+// };
+
+// const expelStudentToVoldyEvent = () => {
+//   if (document.getElementById("#expelButton").clicked == true) {
+//     newStudent.expelledStatus = 1;
+//   } 
+//   voldyStudents = filterStudents(newStudents, 1);
+//   expelledStudCardBuilder(voldyStudents);
+
+// };
