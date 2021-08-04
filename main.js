@@ -2,7 +2,7 @@ const housesArray = [
   {
     id: 1,
     houseName: "Griffindor",
-    img: "https://i.pinimg.com/originals/57/1c/05/571c05cafaaeb23da51886f4365ea7ad.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDs8LYNHX5yrESqq6IGdLct23WKDBHBg01ag&usqp=CAU",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const housesArray = [
   },
 ];
 
-//randomizes house
+//function that randomizes house
 const sortHouses = () => {
   const randomHogHouses = housesArray[Math.floor(Math.random() * housesArray.length)];
 
@@ -130,7 +130,7 @@ const sortFormSubmit = (event) => {
     img: img,
   };
   sortedStudents.push(newStudent);
-  autoAssignHogwartsHouseBuilder(sortedStudents);
+  autoAssignHogwartsHouseBuilder(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
 
   document.querySelector("form").reset();
 };
@@ -142,8 +142,8 @@ const expelStudentToVoldyEvent = (event) => {
 
   if (targetType === "button") {
     voldyArmy.push(sortedStudents.splice(targetId, 1)[0]);
-    expelledStudCardBuilder(voldyArmy);
-    autoAssignHogwartsHouseBuilder(sortedStudents);
+    expelledStudCardBuilder(voldyArmy.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    autoAssignHogwartsHouseBuilder(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   };
 };
 
