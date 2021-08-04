@@ -42,3 +42,8 @@ form {
   border: black 1px solid;
   text-align: center;
 }
+
+.voldyCards {
+  background-color: black;
+  color: white;
+}

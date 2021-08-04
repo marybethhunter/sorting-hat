@@ -21,15 +21,12 @@ const housesArray = [
   },
 ];
 
+//randomizes house
 const sortHouses = () => {
   const randomHogHouses = housesArray[Math.floor(Math.random() * housesArray.length)];
 
   return randomHogHouses;
 };
-
-
-
-// const randomHouse = housesArray[Math.floor(Math.random() * housesArray.length)];
 
 const sortedStudents = [];
 
@@ -40,6 +37,7 @@ const renderToDom = (divId, textToRender) => {
   selectedDiv.innerHTML = textToRender;
 };
 
+//creates the welcome card - there upon loading site
 const createWelcomeCard = () => {
   let domString = `
   <div class="welcome">
@@ -47,7 +45,7 @@ const createWelcomeCard = () => {
       <h2 class="card-title">Welcome to Hogwarts! Let's get sorting!</h2>
         <p class="card-text">Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seeker: Hagrid broomstick mischief managed.</p>
         <p class="card-text"> Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden forest grindylows wool socks.</p>
-        <button type="button" id="welcomeBtn">Sort Me!</button>
+        <button type="button" id="welcomeBtn" class="btn btn-primary">Sort Me!</button>
       </div>
   </div>
   `;
@@ -55,6 +53,7 @@ const createWelcomeCard = () => {
   renderToDom("#welcomeCard", domString);
 };
 
+//creates the second card that has the form to put a name in
 const createSortingFormCard = () => {
   let domString = `
   <div class="sortCard">
@@ -82,12 +81,14 @@ const createSortingFormCard = () => {
   renderToDom("#sortingCard", domString);
 };
 
+//function that creates the sorting form element
 const welcomeButtonClick = (event) => {
   if (event.target.id === "welcomeBtn") {
     createSortingFormCard(event);
   }
 };
 
+//button click events
 const buttonClickEvents = () => {
   document
     .querySelector("#welcomeBtn")
@@ -100,6 +101,7 @@ const buttonClickEvents = () => {
     .addEventListener("click", expelStudentToVoldyEvent);
 };
 
+//function that builds the sorted student card
 const autoAssignHogwartsHouseBuilder = (array) => {
   let domString = "";
   array.forEach((student, i) => {
@@ -118,6 +120,7 @@ const autoAssignHogwartsHouseBuilder = (array) => {
   renderToDom("#sortedCards", domString);
 };
 
+//function that creates the sorted student object and pushes it into array and gets built
 const sortFormSubmit = (event) => {
   event.preventDefault();
   const {houseName, img} = sortHouses();
@@ -125,7 +128,6 @@ const sortFormSubmit = (event) => {
     name: document.querySelector("#inputName").value,
     house: houseName,
     img: img,
-    expelledStatus: 0,
   };
   sortedStudents.push(newStudent);
   autoAssignHogwartsHouseBuilder(sortedStudents);
@@ -133,20 +135,25 @@ const sortFormSubmit = (event) => {
   document.querySelector("form").reset();
 };
 
-const expelStudentToVoldyEvent = () => {
-  const expelledStudent = {
-    name: document.querySelector("#inputName").value,
-    expelledStatus: 1,
+//expel event - pushing the spliced sortedStudents array into voldyArmy array
+const expelStudentToVoldyEvent = (event) => {
+  const targetType = event.target.type;
+  const targetId = event.target.id;
+
+  if (targetType === "button") {
+    voldyArmy.push(sortedStudents.splice(targetId, 1)[0]);
+    expelledStudCardBuilder(voldyArmy);
+    autoAssignHogwartsHouseBuilder(sortedStudents);
   };
-  voldyArmy.push(expelledStudent);
-  expelledStudCardBuilder(voldyArmy);
 };
 
+//builder for voldyArmy array cards once expelled
 const expelledStudCardBuilder = (array) => {
   let domString = "";
   array.forEach((student) => {
     domString += `
-    <div class="card" style="width: 18rem;">
+    <div class="card voldyCards" style="width: 18rem;">
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/7d/DeathEaters.jpg" alt="voldemort and death eaters">
       <div class="card-body">
         <h5 class="card-title">Oh no, ${student.name} has joined Voldemort's Army!</h5>
       </div>
@@ -157,24 +164,10 @@ const expelledStudCardBuilder = (array) => {
   renderToDom("#voldemortCards", domString);
 };
 
+//starts app
 const init = () => {
   createWelcomeCard();
   buttonClickEvents();
 };
 
 init();
-
-
-
-// const filterStudents = (array, status) => {
-//   return array.filter((stuObj) => stuObj.status === status);
-// };
-
-// const expelStudentToVoldyEvent = () => {
-//   if (document.getElementById("#expelButton").clicked == true) {
-//     newStudent.expelledStatus = 1;
-//   } 
-//   voldyStudents = filterStudents(newStudents, 1);
-//   expelledStudCardBuilder(voldyStudents);
-
-// };
