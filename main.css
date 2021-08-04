@@ -47,3 +47,7 @@ form {
   background-color: black;
   color: white;
 }
+
+.form-control-plaintext {
+  width: 50px;
+}
