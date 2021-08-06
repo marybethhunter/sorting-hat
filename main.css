@@ -1,5 +1,6 @@
 body {
   background-color: lightgray;
+  max-width: 100%;
 }
 
 form {
@@ -7,9 +8,9 @@ form {
   align-self: center;
 }
 
-.btn {
+/* .btn {
   min-width: 100px;
-}
+} */
 
 .welcomeStyles,
 .sortingStyles,
@@ -28,6 +29,14 @@ form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100%;
+}
+
+.sortCard {
+  max-width: 100%;
+}
+
+.sortCardForm {
   max-width: 100%;
 }
 

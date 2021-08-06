@@ -50,8 +50,8 @@ const newStudent = {
 
 ### Screenshots:
 
-![]<img width="960" alt="2021-08-06 (1)" src="https://user-images.githubusercontent.com/86667443/128573741-37984916-aee4-476c-b0ce-76f6f8e3d495.png">
+<img width="960" alt="2021-08-06 (1)" src="https://user-images.githubusercontent.com/86667443/128573741-37984916-aee4-476c-b0ce-76f6f8e3d495.png">
 
-![]<img width="913" alt="2021-08-06 (2)" src="https://user-images.githubusercontent.com/86667443/128573764-b4c9205e-bcdb-457b-a273-ccf8d7c94ecc.png">
+<img width="913" alt="2021-08-06 (2)" src="https://user-images.githubusercontent.com/86667443/128573764-b4c9205e-bcdb-457b-a273-ccf8d7c94ecc.png">
 
 ### Contributors: [Mary Beth Hunter](https://github.com/marybethhunter)
