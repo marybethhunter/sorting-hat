@@ -2,7 +2,7 @@ const housesArray = [
   {
     id: 1,
     houseName: "Griffindor",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDs8LYNHX5yrESqq6IGdLct23WKDBHBg01ag&usqp=CAU",
+    img: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/original/products/88361/91122/Harry-Potter-Gryffindor-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__95823.1507640354.jpg?c=2",
   },
   {
     id: 2,
@@ -106,8 +106,8 @@ const autoAssignHogwartsHouseBuilder = (array) => {
   let domString = "";
   array.forEach((student, i) => {
     domString += `
-      <div class="card" style="width: 18rem;">\
-      <img src="${student.img}"><alt="hogwarts house logo">
+      <div id="classColors" class="card" style="width: 18rem;">\
+      <img class="crests" src="${student.img}"><alt="hogwarts house logo">
       <div class="card-body">
         <h5 class="card-title">${student.name}</h5>
         <p class="card-text">${student.house}</p>
@@ -131,7 +131,7 @@ const sortFormSubmit = (event) => {
   };
   sortedStudents.push(newStudent);
   autoAssignHogwartsHouseBuilder(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
-
+  changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   document.querySelector("form").reset();
 };
 
@@ -144,6 +144,7 @@ const expelStudentToVoldyEvent = (event) => {
     voldyArmy.push(sortedStudents.splice(targetId, 1)[0]);
     expelledStudCardBuilder(voldyArmy.sort((a, b) => (a.name > b.name ? 1 : -1)));
     autoAssignHogwartsHouseBuilder(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   };
 };
 
@@ -162,6 +163,26 @@ const expelledStudCardBuilder = (array) => {
   });
 
   renderToDom("#voldemortCards", domString);
+};
+
+//function to change card colors
+const changeCardColors = (array) => {
+  array.forEach((student) => {
+    const applyClass = document.querySelector("#classColors");
+    console.log(applyClass);
+  if (student.house === "Griffindor") {
+    applyClass.setAttribute("id", "griffindor");
+  }
+  if (student.house === "Ravenclaw") {
+    applyClass.setAttribute("id", "ravenclaw");
+  }
+  if (student.house === "Hufflepuff") {
+    applyClass.setAttribute("id", "hufflepuff");
+  }
+  if (student.house === "Slytherin") {
+    applyClass.setAttribute("id", "slytherin");
+  };
+  })
 };
 
 //starts app
