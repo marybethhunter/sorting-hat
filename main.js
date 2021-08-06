@@ -142,7 +142,6 @@ const sortFormSubmit = (event) => {
   autoAssignHogwartsHouseBuilder(
     sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
   );
-  // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   buildFilterButtons();
   document.querySelector("form").reset();
 };
@@ -160,7 +159,6 @@ const expelStudentToVoldyEvent = (event) => {
     autoAssignHogwartsHouseBuilder(
       sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
     );
-    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
 };
 
@@ -180,25 +178,6 @@ const expelledStudCardBuilder = (array) => {
 
   renderToDom("#voldemortCards", domString);
 };
-
-//function to change card colors
-// const changeCardColors = (array) => {
-//   array.forEach((student) => {
-//     const applyClass = document.querySelector("#classColors");
-//     if (student.house === "Griffindor") {
-//       applyClass.setAttribute("id", "griffindor");
-//     }
-//     if (student.house === "Ravenclaw") {
-//       applyClass.setAttribute("id", "ravenclaw");
-//     }
-//     if (student.house === "Hufflepuff") {
-//       applyClass.setAttribute("id", "hufflepuff");
-//     }
-//     if (student.house === "Slytherin") {
-//       applyClass.setAttribute("id", "slytherin");
-//     }
-//   });
-// };
 
 //function that creates the filter buttons
 const buildFilterButtons = () => {
@@ -228,7 +207,6 @@ const handleFilterByHouse = (event) => {
     autoAssignHogwartsHouseBuilder(
       sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
     );
-    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "grif-btn") {
     const grifHouses = filterByHouse(
@@ -236,7 +214,6 @@ const handleFilterByHouse = (event) => {
       "Griffindor"
     );
     autoAssignHogwartsHouseBuilder(grifHouses);
-    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "raven-btn") {
     const ravenHouses = filterByHouse(
@@ -244,7 +221,6 @@ const handleFilterByHouse = (event) => {
       "Ravenclaw"
     );
     autoAssignHogwartsHouseBuilder(ravenHouses);
-    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "slyth-btn") {
     const slythHouses = filterByHouse(
@@ -252,7 +228,6 @@ const handleFilterByHouse = (event) => {
       "Slytherin"
     );
     autoAssignHogwartsHouseBuilder(slythHouses);
-    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "huffle-btn") {
     const huffleHouses = filterByHouse(
@@ -260,7 +235,6 @@ const handleFilterByHouse = (event) => {
       "Hufflepuff"
     );
     autoAssignHogwartsHouseBuilder(huffleHouses);
-    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
 };
 
