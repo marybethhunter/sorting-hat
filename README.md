@@ -1,6 +1,6 @@
 # Welcome to the Hogwarts Sorting Hat application! [![Netlify Status](https://api.netlify.com/api/v1/badges/434b4a23-adec-4c3c-89e5-9b7b7877a236/deploy-status)](https://app.netlify.com/sites/mbh-sortinghat/deploys)
 
-# [View Site](#https://mbh-sortinghat.netlify.app/)
+# [View Site](https://mbh-sortinghat.netlify.app/)
 
 # Get Started (code snippet)
 
@@ -17,12 +17,12 @@
 
 ## -Organizing: All sorted and expelled cards are arranged alphabetically.
 
-# [Loom video walkthrough](#)
+# [Loom video walkthrough]()
 
 # Relevant Links:
-## -[Figma Wireframe](#https://www.figma.com/file/VPChxqqF0SMoG7ZG7OHuFH/Sorting-Hat-App?node-id=0%3A1)
-## -[Project Board](#https://github.com/marybethhunter/sorting-hat/projects/1)
-## -[View Site](#https://mbh-sortinghat.netlify.app/)
+## -[Figma Wireframe](https://www.figma.com/file/VPChxqqF0SMoG7ZG7OHuFH/Sorting-Hat-App?node-id=0%3A1)
+## -[Project Board](https://github.com/marybethhunter/sorting-hat/projects/1)
+## -[View Site](https://mbh-sortinghat.netlify.app/)
 
 # Code Snippet:
 
