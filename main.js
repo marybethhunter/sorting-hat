@@ -3,21 +3,25 @@ const housesArray = [
     id: 1,
     houseName: "Griffindor",
     img: "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/original/products/88361/91122/Harry-Potter-Gryffindor-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__95823.1507640354.jpg?c=2",
+    color: "AA2E2E",
   },
   {
     id: 2,
     houseName: "Ravenclaw",
     img: "https://i.pinimg.com/originals/4e/e6/35/4ee6353519b0e68acf635c3da751591c.png",
+    color: "02028A",
   },
   {
     id: 3,
     houseName: "Slytherin",
     img: "https://www.logolynx.com/images/logolynx/53/5390e974544de6279c4d9cb6253e3a2c.jpeg",
+    color: "015C01",
   },
   {
     id: 4,
     houseName: "Hufflepuff",
     img: "https://www.yourwdwstore.net/assets/images/3/30000/2000/100/32178.jpg",
+    color: "FFF065",
   },
 ];
 
@@ -110,7 +114,7 @@ const autoAssignHogwartsHouseBuilder = (array) => {
   let domString = "";
   array.forEach((student, i) => {
     domString += `
-      <div id="classColors" class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem; background-color: #${student.houseColor}">
       <img class="crests" src="${student.img}"><alt="hogwarts house logo">
       <div class="card-body">
         <h5 class="card-title">${student.name}</h5>
@@ -127,17 +131,18 @@ const autoAssignHogwartsHouseBuilder = (array) => {
 //function that creates the sorted student object and pushes it into array and gets built
 const sortFormSubmit = (event) => {
   event.preventDefault();
-  const { houseName, img } = sortHouses();
+  const { houseName, img, color } = sortHouses();
   const newStudent = {
     name: document.querySelector("#inputName").value,
     house: houseName,
     img: img,
+    houseColor: color,
   };
   sortedStudents.push(newStudent);
   autoAssignHogwartsHouseBuilder(
     sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
   );
-  changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+  // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   buildFilterButtons();
   document.querySelector("form").reset();
 };
@@ -155,7 +160,7 @@ const expelStudentToVoldyEvent = (event) => {
     autoAssignHogwartsHouseBuilder(
       sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
     );
-    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
 };
 
@@ -177,23 +182,23 @@ const expelledStudCardBuilder = (array) => {
 };
 
 //function to change card colors
-const changeCardColors = (array) => {
-  array.forEach((student) => {
-    const applyClass = document.querySelector("#classColors");
-    if (student.house === "Griffindor") {
-      applyClass.setAttribute("id", "griffindor");
-    }
-    if (student.house === "Ravenclaw") {
-      applyClass.setAttribute("id", "ravenclaw");
-    }
-    if (student.house === "Hufflepuff") {
-      applyClass.setAttribute("id", "hufflepuff");
-    }
-    if (student.house === "Slytherin") {
-      applyClass.setAttribute("id", "slytherin");
-    }
-  });
-};
+// const changeCardColors = (array) => {
+//   array.forEach((student) => {
+//     const applyClass = document.querySelector("#classColors");
+//     if (student.house === "Griffindor") {
+//       applyClass.setAttribute("id", "griffindor");
+//     }
+//     if (student.house === "Ravenclaw") {
+//       applyClass.setAttribute("id", "ravenclaw");
+//     }
+//     if (student.house === "Hufflepuff") {
+//       applyClass.setAttribute("id", "hufflepuff");
+//     }
+//     if (student.house === "Slytherin") {
+//       applyClass.setAttribute("id", "slytherin");
+//     }
+//   });
+// };
 
 //function that creates the filter buttons
 const buildFilterButtons = () => {
@@ -223,7 +228,7 @@ const handleFilterByHouse = (event) => {
     autoAssignHogwartsHouseBuilder(
       sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
     );
-    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "grif-btn") {
     const grifHouses = filterByHouse(
@@ -231,7 +236,7 @@ const handleFilterByHouse = (event) => {
       "Griffindor"
     );
     autoAssignHogwartsHouseBuilder(grifHouses);
-    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "raven-btn") {
     const ravenHouses = filterByHouse(
@@ -239,7 +244,7 @@ const handleFilterByHouse = (event) => {
       "Ravenclaw"
     );
     autoAssignHogwartsHouseBuilder(ravenHouses);
-    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "slyth-btn") {
     const slythHouses = filterByHouse(
@@ -247,7 +252,7 @@ const handleFilterByHouse = (event) => {
       "Slytherin"
     );
     autoAssignHogwartsHouseBuilder(slythHouses);
-    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
   if (event.target.id === "huffle-btn") {
     const huffleHouses = filterByHouse(
@@ -255,7 +260,7 @@ const handleFilterByHouse = (event) => {
       "Hufflepuff"
     );
     autoAssignHogwartsHouseBuilder(huffleHouses);
-    changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    // changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
 };
 
