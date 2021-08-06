@@ -53,14 +53,14 @@ form {
   width: 50px;
 }
 
-#griffindor {
+/* #griffindor {
   background-color: rgb(170, 46, 46);
   color: white;
 }
 
 #ravenclaw {
   background-color: rgb(2, 2, 138);
-  color: white;
+  color: rgb(107, 96, 96);
 }
 
 #slytherin {
@@ -71,7 +71,7 @@ form {
 #hufflepuff {
   background-color: rgb(255, 240, 101);
   color: black;
-}
+} */
 
 .crests {
   border-bottom: black 2px solid;
