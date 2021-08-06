@@ -18,7 +18,6 @@ form {
   flex-wrap: wrap;
   justify-content: center;
   background-color: rgb(255, 255, 255);
-  border: black 1px solid;
   margin: 20px;
   text-align: center;
 }
@@ -39,8 +38,9 @@ form {
 
 .card {
   margin: 10px;
-  border: black 1px solid;
+  border: black 2px solid;
   text-align: center;
+  color: white;
 }
 
 .voldyCards {
@@ -50,4 +50,25 @@ form {
 
 .form-control-plaintext {
   width: 50px;
+}
+
+#griffindor {
+  background-color: brown;
+}
+
+#ravenclaw {
+  background-color: darkblue;
+}
+
+#slytherin {
+  background-color: rgb(0, 92, 0);
+}
+
+#hufflepuff {
+  background-color: rgb(255, 240, 101);
+  color: black;
+}
+
+.crests {
+  border-bottom: black 2px solid;
 }
