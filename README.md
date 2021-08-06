@@ -2,7 +2,12 @@
 
 # [View Site](https://mbh-sortinghat.netlify.app/)
 
-# Get Started (code snippet)
+# Get Started:
+
+### ```
+### $ git clone git@github.com:marybethhunter/sorting-hat.git
+### $ cd sorting-hat
+### ```
 
 # About the User
 ## -The ideal user is a Harry Potter fan who wants to know in which the Sorting Hat would place them. 
@@ -26,6 +31,23 @@
 
 # Code Snippet:
 
+### ``` 
+### const sortFormSubmit = (event) => {
+### event.preventDefault();
+###   const {houseName, img} = sortHouses();
+###   const newStudent = {
+###     name: document.querySelector("#inputName").value,
+###     house: houseName,
+###     img: img,
+###    };
+###  sortedStudents.push(newStudent);
+###  autoAssignHogwartsHouseBuilder(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+###   changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
+###   buildFilterButtons();
+###   document.querySelector("form").reset();
+### };
+### ```
+
 # Screenshots:
 
-# Contributors: [Mary Beth Hunter](#https://github.com/marybethhunter)
+# Contributors: [Mary Beth Hunter](https://github.com/marybethhunter)

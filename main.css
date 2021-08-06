@@ -22,7 +22,7 @@ form {
   text-align: center;
 }
 
-.cardsFlex, 
+.cardsFlex,
 .filteringButtons {
   display: flex;
   flex-wrap: wrap;
