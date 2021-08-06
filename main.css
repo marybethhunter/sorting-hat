@@ -20,6 +20,7 @@ form {
   background-color: rgb(255, 255, 255);
   margin: 20px;
   text-align: center;
+  max-width: 100%;
 }
 
 .cardsFlex,
@@ -27,6 +28,7 @@ form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100%;
 }
 
 .sortedStyles {
@@ -42,6 +44,7 @@ form {
   border: black 2px solid;
   text-align: center;
   color: black;
+  max-width: 100%;
 }
 
 .voldyCards {
@@ -53,31 +56,17 @@ form {
   width: 50px;
 }
 
-/* #griffindor {
-  background-color: rgb(170, 46, 46);
-  color: white;
-}
-
-#ravenclaw {
-  background-color: rgb(2, 2, 138);
-  color: rgb(107, 96, 96);
-}
-
-#slytherin {
-  background-color: rgb(0, 92, 0);
-  color: white;
-}
-
-#hufflepuff {
-  background-color: rgb(255, 240, 101);
-  color: black;
-} */
-
 .crests {
   border-bottom: black 2px solid;
+  max-width: 100%;
 }
 
 .buttonCard {
   margin: 20px;
   padding: 50x;
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
 }
