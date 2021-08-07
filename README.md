@@ -33,19 +33,21 @@
 
 ```javascript
 const sortFormSubmit = (event) => {
-event.preventDefault();
-const {houseName, img} = sortHouses();
-const newStudent = {
-     name: document.querySelector("#inputName").value,
-     house: houseName,
-     img: img,
-    };
+  event.preventDefault();
+  const { houseName, img, color } = sortHouses();
+  const newStudent = {
+    name: document.querySelector("#inputName").value,
+    house: houseName,
+    img: img,
+    houseColor: color,
+  };
   sortedStudents.push(newStudent);
-  autoAssignHogwartsHouseBuilder(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
-   changeCardColors(sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1)));
-   buildFilterButtons();
-   document.querySelector("form").reset();
- };
+  autoAssignHogwartsHouseBuilder(
+    sortedStudents.sort(((a, b) => ((a.name === b.name) ? 0 : ((a.name > b.name)) ? 1 : -1)))
+  );
+  buildFilterButtons();
+  document.querySelector("form").reset();
+};
 ```
 
 ### Screenshots:
