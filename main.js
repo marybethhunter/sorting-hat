@@ -140,7 +140,7 @@ const sortFormSubmit = (event) => {
   };
   sortedStudents.push(newStudent);
   autoAssignHogwartsHouseBuilder(
-    sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
+    sortedStudents.sort(((a, b) => ((a.name === b.name) ? 0 : ((a.name > b.name)) ? 1 : -1)))
   );
   buildFilterButtons();
   document.querySelector("form").reset();
@@ -154,11 +154,9 @@ const expelStudentToVoldyEvent = (event) => {
   if (targetType === "button") {
     voldyArmy.push(sortedStudents.splice(targetId, 1)[0]);
     expelledStudCardBuilder(
-      voldyArmy.sort((a, b) => (a.name > b.name ? 1 : -1))
-    );
+      voldyArmy.sort((a, b) => ((a.name === b.name) ? 0 : ((a.name > b.name)) ? 1 : -1)));
     autoAssignHogwartsHouseBuilder(
-      sortedStudents.sort((a, b) => (a.name > b.name ? 1 : -1))
-    );
+      sortedStudents.sort((a, b) => ((a.name === b.name) ? 0 : ((a.name > b.name)) ? 1 : -1)));
   }
 };
 
